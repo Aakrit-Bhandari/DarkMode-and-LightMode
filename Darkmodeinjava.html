@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="darkmode.css" />
+    <style>
+      .lli {
+        background-color: gold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      .drr {
+        background-color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      .darkmode {
+        background-color: gold;
+        color: rgb(39, 112, 136);
+        border: none;
+        padding: 20px;
+        font-size: 20px;
+        border-radius: 1em;
+      }
+      .darkmode:hover {
+        box-shadow: 0 0.5em 0.5em 0em rgb(211, 72, 21);
+        transform: translateY(-4%);
+      }
+      .lightmode {
+        background-color: black;
+        color: purple;
+        border: none;
+        padding: 20px;
+        font-size: 20px;
+        border-radius: 1em;
+      }
+      .lightmode:hover {
+        box-shadow: 0 0.5em 0.5em 0em rgb(40, 0, 40);
+        transform: translateY(-4%);
+      }
+    </style>
+  </head>
+  <body class="lli">
+    <section>
+      <button class="darkmode" onclick="toggle()">
+        <span>LightMode</span>
+      </button>
+    </section>
+    <script>
+      function toggle() {
+        var button = document.getElementsByClassName("darkmode")[0];
+
+        if (button.classList.contains("lightmode")) {
+          button.classList.remove("lightmode");
+          document.body.style.backgroundColor = "gold";
+        } else {
+          button.classList.add("lightmode");
+          document.body.style.backgroundColor = "black";
+        }
+
+        button.innerHTML = button.classList.contains("lightmode")
+          ? "DarkMode"
+          : "LightMode";
+
+        document.body.classList.toggle(
+          "lli",
+          !button.classList.contains("lightmode")
+        );
+      }
+    </script>
+  </body>
+</html>
