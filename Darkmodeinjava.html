@@ -3,75 +3,96 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="darkmode.css" />
+    <title>Dark & Light Mode</title>
     <style>
-      .lli {
-        background-color: gold;
+      body {
+        background-color: wheat;
         display: flex;
         align-items: center;
-        justify-content: center;
         height: 100vh;
+        justify-content: center;
       }
-      .drr {
-        background-color: black;
+      .click {
+        background-color: lightblue;
+        border-radius: 5em;
+        width: 200px;
+        padding: 20px;
+        width: 200px;
+        font-size: 22px;
+        font-weight: bold;
+        color: red;
+        border: 2px solid lightblue;
+      }
+      .click:hover {
+        transform: translateY(-4%);
+        box-shadow: 0 0.5em 0.5em 0 black;
+      }
+      section {
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: center;
-        height: 100vh;
+        justify-content: centers;
       }
-      .darkmode {
-        background-color: gold;
-        color: rgb(39, 112, 136);
-        border: none;
-        padding: 20px;
-        font-size: 20px;
-        border-radius: 1em;
-      }
-      .darkmode:hover {
-        box-shadow: 0 0.5em 0.5em 0em rgb(211, 72, 21);
-        transform: translateY(-4%);
-      }
-      .lightmode {
+      .klick {
         background-color: black;
-        color: purple;
-        border: none;
+        border-radius: 3em;
         padding: 20px;
-        font-size: 20px;
-        border-radius: 1em;
+        width: 200px;
+        font-size: 22px;
+        font-weight: bold;
+        color: darkmagenta;
+        border: 2px solid purple;
       }
-      .lightmode:hover {
-        box-shadow: 0 0.5em 0.5em 0em rgb(40, 0, 40);
+      .klick:hover {
         transform: translateY(-4%);
+        box-shadow: 0 0.5em 0.5em 0 magenta;
+      }
+      #display {
+        font-size: 20px;
+        font-weight: bolder;
+        color: black;
       }
     </style>
   </head>
-  <body class="lli">
+  <body>
     <section>
-      <button class="darkmode" onclick="toggle()">
-        <span>LightMode</span>
+      <button
+        class="click"
+        onmouseenter="Dis()"
+        onmouseleave="gogo()"
+        onclick="toggle()"
+      >
+        <span>Light Mode</span>
       </button>
+      <p id="display"></p>
     </section>
     <script>
       function toggle() {
-        var button = document.getElementsByClassName("darkmode")[0];
+        var button = document.getElementsByClassName("click")[0];
+        var disp = document.getElementById("display");
 
-        if (button.classList.contains("lightmode")) {
-          button.classList.remove("lightmode");
-          document.body.style.backgroundColor = "gold";
+        if (button.classList.contains("klick")) {
+          button.classList.remove("klick");
+          document.body.style.backgroundColor = "wheat";
+          disp.innerHTML = "Wanna switch to Dark Mode?";
+          disp.style.color = "black"; // Set text color to black
         } else {
-          button.classList.add("lightmode");
+          button.classList.add("klick");
           document.body.style.backgroundColor = "black";
+          disp.innerHTML = "Wanna switch to Light Mode?";
+          disp.style.color = "white"; // Set text color to white
         }
 
-        button.innerHTML = button.classList.contains("lightmode")
-          ? "DarkMode"
-          : "LightMode";
-
-        document.body.classList.toggle(
-          "lli",
-          !button.classList.contains("lightmode")
-        );
+        button.innerHTML = button.classList.contains("klick")
+          ? "Dark Mode"
+          : "Light Mode";
+      }
+      function Dis() {
+        document.getElementById("display").innerHTML =
+          "Wanna switch to Dark Mode?";
+      }
+      function gogo() {
+        document.getElementById("display").innerHTML = "";
       }
     </script>
   </body>
